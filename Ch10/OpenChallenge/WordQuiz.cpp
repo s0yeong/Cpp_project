@@ -47,10 +47,9 @@ WordQuiz::WordQuiz()
 void WordQuiz::run()
 {
 	srand((unsigned)time(0));
-	int n = rand();
 	cout << "영어 어휘 테스트를 시작합니다. 1~4 외 다른 입력시 종료합니다." << endl;
 	while (true) {
-		int answerIndex = n % v.size();
+		int answerIndex = rand() % v.size();
 		string eng = v[answerIndex].getEnglish();
 		int korExample[4];
 		int answerloc = makeExample(korExample, answerIndex); //정답이 있는 보기 번호
@@ -58,9 +57,9 @@ void WordQuiz::run()
 
 		cout << eng << "?" << endl;
 		for (int i = 0; i < 4; i++) {
-			cout << "(" << i + 1 << ")\t" << korExample[i] << "\t";
+			cout << "(" << i + 1 << ") " << v[korExample[i]].getKorean() << ' ';
 		}
-		cout << ":>" << endl;
+		cout << ":>";
 
 		int in;
 		cin >> in;
